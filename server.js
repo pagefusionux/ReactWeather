@@ -12,10 +12,10 @@ const port = process.env.PORT || 3000; // for deploying to Heroku
 
 // fix for redirecting https URL for Weather API
 app.use(function(req, res, next) {
-  if (req.headers['x-forwarded-proto'] === 'http') {
-    next();
-  } else {
+  if (req.headers['x-forwarded-proto'] === 'https') { // x-forwarded-proto doesn't exist locally
     res.redirect('http://' + req.hostname + req.url);
+  } else {
+    next();
   }
 });
 

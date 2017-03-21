@@ -7,25 +7,27 @@
 * - openWeatherMap componentized to encapsulate API call functionality
 * */
 
-var React = require('react');
-var WeatherForm = require('WeatherForm');
-var WeatherMessage = require('WeatherMessage');
-var openWeatherMap = require('openWeatherMap'); // API Promise
+const React = require('react');
+const WeatherForm = require('WeatherForm');
+const WeatherMessage = require('WeatherMessage');
+const openWeatherMap = require('openWeatherMap'); // API Promise
+const ErrorModal = require('ErrorModal');
 
 // Page component
-var Weather = React.createClass({
+const Weather = React.createClass({
   getInitialState: function () {
     return {
       isLoading: false
     }
   },
   handleSearch: function (location) {
-    
-    var that = this; // for this.setState below
+  
+    const that = this; // for this.setState below
     
     //debugger; // use debugger to pause React dev-tools tab (breakpoint)
     this.setState({
-      isLoading: true
+      isLoading: true,
+      errorMessage: undefined
     });
     
     /* do promise stuff in openWeatherMap component */
@@ -35,13 +37,13 @@ var Weather = React.createClass({
         temp: temp,
         isLoading: false
       });
-    }, function (errorMessage) {
+    }, function (e) {
       that.setState({
-        isLoading: false
+        isLoading: false,
+        errorMessage: e.message
       });
-      alert(errorMessage);
     });
-    
+
     /*
     * Why do we have to assign 'this' to 'that' in the code above to use setState()?
     *
@@ -52,17 +54,26 @@ var Weather = React.createClass({
     *
     * */
     
-    
   },
   render: function () {
-    var {isLoading, temp, location} = this.state;
+    let {isLoading, temp, location, errorMessage} = this.state;
     
     // conditional moved into function
-    function renderMessage() { // handles loading to output presentation transition (must return JSX code)
+    function renderMessage () { // handles loading to output presentation transition (must return JSX code)
       if (isLoading) {
         return <h3 className="text-center">Fetching weather...</h3>;
       } else if (temp && location) {
         return <WeatherMessage temp={temp} location={location}/>;
+      }
+    }
+  
+    function renderError () {
+      if (typeof errorMessage === 'string') {
+        return (
+          <ErrorModal message={errorMessage} />
+        )
+      } else {
+        console.log('no error');
       }
     }
     
@@ -71,6 +82,7 @@ var Weather = React.createClass({
         <h1 className="text-center">Get Weather</h1>
         <WeatherForm onSearch={this.handleSearch}/>
         {renderMessage()} {/* This is a JSX expression (that handles a conditional). */}
+        {renderError()}
       </div>
     );
   }

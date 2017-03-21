@@ -17,7 +17,10 @@ var About = React.createClass({
 
 const About = (props) => {
   return (
-    <h3>About Component</h3>
+    <div>
+      <h3>About</h3>
+      <p>This is the about component.</p>
+    </div>
   );
 };
 

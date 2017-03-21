@@ -19,8 +19,11 @@ const Main = (props) => {
   return (
     <div>
       <Nav/>
-      <h2>Main Component</h2>
-      {props.children} {/* handled by react-router; target for rendering separate page components */}
+      <div className="row">
+        <div className="small-centered medium-6 large-4 columns">
+          {props.children} {/* handled by react-router; target for rendering separate page components */}
+        </div>
+      </div>
     </div>
   );
 };

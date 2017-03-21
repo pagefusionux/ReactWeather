@@ -18,6 +18,9 @@ const Examples = require('Examples');
 require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
+// app css
+require('style!css!applicationStyles');
+
 /*
  ES6 object destructuring syntax above, essentially does this:
  

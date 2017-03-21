@@ -18,7 +18,7 @@ var About = React.createClass({
 const About = (props) => {
   return (
     <div>
-      <h1 className="text-center">About</h1>
+      <h1 className="text-center page-title">About</h1>
       <p>
         This application was made by following a tutorial called "The Complete React Web App Developer Course" on
         Udemy.com.

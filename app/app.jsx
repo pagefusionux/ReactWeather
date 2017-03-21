@@ -14,8 +14,8 @@ const Weather = require('Weather');
 const About = require('About');
 const Examples = require('Examples');
 
-// Load Foundation (using css loader)
-require('style!css!foundation-sites/dist/foundation.min.css')
+// Load Foundation (using style and css loaders)
+require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
 /*

@@ -14,6 +14,10 @@ const Weather = require('Weather');
 const About = require('About');
 const Examples = require('Examples');
 
+// Load Foundation (using css loader)
+require('style!css!foundation-sites/dist/foundation.min.css')
+$(document).foundation();
+
 /*
  ES6 object destructuring syntax above, essentially does this:
  

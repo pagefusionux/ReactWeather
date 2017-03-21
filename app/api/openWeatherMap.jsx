@@ -29,7 +29,7 @@ module.exports = {
     
     // using axios for Promises
     return axios.get(requestUrl).then(function(res) { /* chained promise :) because we're calling openWeatherMap function to get here*/
-      debugger;
+      //debugger;
       if (res.data.cod && res.data.message) {
         throw new Error(res.data.message);
       } else {

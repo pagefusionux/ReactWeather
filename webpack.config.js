@@ -2,7 +2,7 @@
  * Allows webpack parameters to be passed simply.
  * $ webpack
  *
- * babel, react, ES6, stage=0
+ * babel, react, ES6, stage-0
  */
 
 const webpack = require('webpack');
@@ -38,7 +38,7 @@ module.exports = {
       Examples: 'app/components/Examples.jsx',
       openWeatherMap: 'app/api/openWeatherMap.jsx',
       ErrorModal: 'app/components/ErrorModal.jsx',
-      applicationStyles: 'app/styles/app.css'
+      applicationStyles: 'app/styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']
   },

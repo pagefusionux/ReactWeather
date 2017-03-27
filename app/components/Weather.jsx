@@ -95,7 +95,7 @@ const Weather = React.createClass({
           <ErrorModal message={errorMessage} />
         )
       } else {
-        console.log('no error');
+        //console.log('no error');
       }
     }
     

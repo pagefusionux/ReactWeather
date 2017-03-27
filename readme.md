@@ -95,12 +95,12 @@ Allow the compilation of SCSS files:
   ```
 
 
-
 ---
 To compile and serve app, have these two programs running concurrently:
 - `$ webpack -w`
 - `$ node server.js`
-- go to [Link](http://localhost:3000)
+- go to [http://localhost:3000](http://localhost:3000)
+
 
 ---
 Udemy Tutorial:

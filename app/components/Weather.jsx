@@ -27,7 +27,9 @@ const Weather = React.createClass({
     //debugger; // use debugger to pause React dev-tools tab (breakpoint)
     this.setState({
       isLoading: true,
-      errorMessage: undefined
+      errorMessage: undefined,
+      location: undefined,
+      temp: undefined
     });
     
     /* do promise stuff in openWeatherMap component */
@@ -54,6 +56,26 @@ const Weather = React.createClass({
     *
     * */
     
+  },
+  componentDidMount: function () {
+    // handle ?location= given in URL
+    const location = this.props.location.query.location;
+    
+    // add search trigger
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/'; // reset hash to root
+    }
+  },
+  componentWillReceiveProps: function (newProps) {
+    // handle ?location= given in URL
+    const location = newProps.location.query.location;
+  
+    // add search trigger
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/'; // reset hash to root
+    }
   },
   render: function () {
     let {isLoading, temp, location, errorMessage} = this.state;
